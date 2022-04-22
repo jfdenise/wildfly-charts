@@ -256,7 +256,11 @@
                       "builderImage": {
                           "description": "The JDK Builder image",
                           "type": ["string", "null"]
-                      }
+                      },
+                        "runtimeImage": {
+                            "description": "The JDK Runtime image",
+                            "type": ["string", "null"]
+                        }
                   }
                 }
             }

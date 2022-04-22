@@ -5,4 +5,9 @@
 ---
 {{ include "wildfly-common.imagestream-s2i-build-artifacts" (list . "wildfly.metadata.labels") }}
 {{- end -}}
+
+{{- if eq .Values.build.mode "bootable-jar" }}
+---
+{{ include "wildfly-common.imagestream-bootable-jar-build-artifacts" (list . "wildfly.metadata.labels") }}
+{{- end -}}
 {{- end -}}

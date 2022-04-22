@@ -13,6 +13,20 @@ wildfly.runtimeImage corresponds to the name of the WildFly Runtime Image
 {{- end }}
 
 {{/*
+bootable-jar.builderImage corresponds to the name of the OpenJDK Builder Image
+*/}}
+{{- define "bootable-jar.builderImage" -}}
+{{ .Values.build.bootableJar.builderImage }}
+{{- end }}
+
+{{/*
+bootable-jar.runtimeImage corresponds to the name of the OpenJDK Runtime Image
+*/}}
+{{- define "bootable-jar.runtimeImage" -}}
+{{ .Values.build.bootableJar.runtimeImage }}
+{{- end }}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "wildfly.chart" -}}

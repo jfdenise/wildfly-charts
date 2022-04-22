@@ -1,3 +1,18 @@
 {{- if and .Values.build.enabled (eq .Values.build.mode "bootable-jar") }}
-{{- include "wildfly-common.buildconfig-bootable-jar" (list . "wildfly.metadata.labels") -}}
-{{- end }}
+{{- include "wildfly-common.buildconfig-bootable-jar" (list . "wildfly.buildconfig-bootable-jar") -}}
+{{- end -}}
+
+{{- define "wildfly.buildconfig-bootable-jar" -}}
+{{- include "wildfly.metadata.labels" . }}
+spec:
+  source:
+    dockerfile: |-
+      FROM {{ include "bootable-jar.runtimeImage" . }}
+      COPY /deployments/* /deployments
+      
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: {{ include "bootable-jar.runtimeImage" .}}
+{{- end -}}

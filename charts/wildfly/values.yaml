@@ -5,6 +5,8 @@ build:
   mode: s2i
   bootableJar:
     builderImage: registry.access.redhat.com/ubi8/openjdk-11:latest
+    # Not yet released
+    runtimeImage: registry-proxy.engineering.redhat.com/rh-osbs/ubi8-openjdk-11-runtime:1.12-1
   s2i:
     builderImage: quay.io/wildfly/wildfly-s2i-jdk11:latest
     runtimeImage: quay.io/wildfly/wildfly-runtime-jdk11:latest

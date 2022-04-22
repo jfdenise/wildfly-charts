@@ -1,0 +1,13 @@
+{{- if and .Values.build.enabled (eq .Values.build.mode "bootable-jar") }}
+{{- include "wildfly-common.buildconfig-bootable-jar-build-artifacts" (list . "wildfly.buildconfig-bootable-jar-build-artifacts") -}}
+{{- end -}}
+
+{{- define "wildfly.buildconfig-bootable-jar-build-artifacts" -}}
+{{- include "wildfly.metadata.labels" . }}
+spec:
+  strategy:
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: {{ include "bootable-jar.builderImage" . }}
+{{- end -}}
